@@ -1,12 +1,16 @@
 from collections import OrderedDict
 import csv
 
-with open('new_headers.csv', 'r') as csvfile:
+INPUT_FILE = 'input.csv'
+NEW_HEADER_FILE = 'new_headers.csv'
+OUTPUT_FILE = 'output.csv'
+
+with open(NEW_HEADER_FILE, 'r') as csvfile:
     new_headers_csv = csv.reader(csvfile)
     fieldnames = next(new_headers_csv)
     fieldname_mappings = next(new_headers_csv)
 
-with open('input.csv', 'r') as infile, open('output.csv', 'a') as outfile:
+with open(INPUT_FILE, 'r') as infile, open(OUTPUT_FILE, 'a') as outfile:
     writer = csv.DictWriter(
         outfile, extrasaction='ignore', fieldnames=fieldnames)
     writer.writeheader()
@@ -33,12 +37,12 @@ with open('input.csv', 'r') as infile, open('output.csv', 'a') as outfile:
     def mapper(item):
         value = item[1]
         try:
-            indices = [i for i, x in enumerate(
+            matching_indices = [i for i, x in enumerate(
                 fieldname_mappings) if x == item[0]]
-            field_name_index = fieldname_mappings.index(item[0])
-            if len(indices) > 1:
+            if len(matching_indices) > 1:
                 key = item[0]
             else:
+                field_name_index = fieldname_mappings.index(item[0])
                 key = fieldnames[field_name_index]
         except (IndexError, ValueError):
             key = item[0]
@@ -46,8 +50,10 @@ with open('input.csv', 'r') as infile, open('output.csv', 'a') as outfile:
         return (key, value)
 
     for row in csv.DictReader(infile):
-        row_items = list(row.items())
-        updated_items = adjust_row(row_items)
-        mapped_items = list(map(mapper, updated_items))
+        row_list = list(row.items())
+        adjusted_row_list = adjust_row(row_list)
+        mapped_items = list(map(mapper, adjusted_row_list))
 
         writer.writerow(OrderedDict(mapped_items))
+
+    print('{} has been created'.format(OUTPUT_FILE))

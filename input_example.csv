@@ -1,0 +1,8 @@
+is_active,last_name,first_name,email,business,role
+Last,First,last.first1@test.com,test business,admin
+Last,First,last.first2@test.com,test business,user
+Last,First,last.first3@test.com,test business,user
+Last,First,last.first4@test.com,test business,user
+Last,First,last.first5@test.com,test business,user
+Last,First,last.first6@test.com,test business,user
+Last,First,last.first7@test.com,test business,user

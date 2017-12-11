@@ -1,0 +1,2 @@
+login,firstName,lastName,middleName,honorificPrefix,honorificSuffix,email,title,displayName,nickName,profileUrl,secondEmail,mobilePhone,primaryPhone,streetAddress,city,state,zipCode,countryCode,postalAddress,preferredLanguage,locale,timezone,userType,employeeNumber,costCenter,organization,division,department,managerId,manager,role,company,streetAddress2,country,passwordHash,ppids,gid,salutation
+email,first_name,last_name,,,,email,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
