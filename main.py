@@ -10,7 +10,7 @@ with open(NEW_HEADER_FILE, 'r') as csvfile:
     fieldnames = next(new_headers_csv)
     fieldname_mappings = next(new_headers_csv)
 
-with open(INPUT_FILE, 'r') as infile, open(OUTPUT_FILE, 'a') as outfile:
+with open(INPUT_FILE, 'r') as infile, open(OUTPUT_FILE, 'w') as outfile:
     writer = csv.DictWriter(
         outfile, extrasaction='ignore', fieldnames=fieldnames)
     writer.writeheader()

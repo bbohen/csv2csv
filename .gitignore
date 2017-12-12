@@ -1,5 +1,5 @@
-input.csv
-output.csv
-new_headers.csv
+*.csv
+!input_example.csv
+!new_headers_example.csv
 
 .vscode
